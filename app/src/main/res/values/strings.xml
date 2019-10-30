@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WizMusic</string>
+    <string name="buy">BUY</string>
+    <string name="purchase_title">Purchase Track</string>
+    <string name="title_tracks">Tracks</string>
+    <string name="title_purchases">Purchases</string>
+    <string name="title_profile">Profile</string>
+</resources>

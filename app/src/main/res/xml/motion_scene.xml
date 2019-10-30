@@ -1,0 +1,103 @@
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/startAnimation"
+        motion:constraintSetStart="@+id/endAnimation"
+        motion:duration="1000"
+        motion:motionInterpolator="anticipate">
+
+        <OnSwipe
+            motion:dragDirection="dragUp"
+            motion:touchAnchorId="@+id/playerHeader" />
+
+        <ConstraintSet android:id="@id/startAnimation">
+
+            <Constraint
+                android:id="@id/playerHeader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toTopOf="parent" />
+
+            <Constraint
+                android:id="@id/ivTrackCover"
+                android:layout_width="0dp"
+                android:layout_height="400dp"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toTopOf="parent"/>
+
+            <Constraint
+                android:id="@id/bottomView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                motion:layout_constraintLeft_toLeftOf="parent"
+                motion:layout_constraintRight_toRightOf="parent"
+                motion:layout_constraintTop_toBottomOf="parent" />
+
+            <Constraint
+                android:id="@id/swipeContainer"
+                android:layout_width="0dp"
+                android:layout_height="400dp"
+                android:background="#808080"
+                motion:layout_constraintLeft_toLeftOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toTopOf="parent" />
+
+            <Constraint
+                android:id="@id/tvTrackName"
+                android:text="" />
+
+            <Constraint
+                android:id="@id/ivNext"
+                android:text="" />
+
+            <Constraint
+                android:id="@id/ivPlay"
+                android:text="" />
+
+        </ConstraintSet>
+
+        <ConstraintSet android:id="@id/endAnimation">
+
+            <Constraint
+                android:id="@id/playerHeader"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                motion:layout_constraintBottom_toTopOf="@id/bottomView"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent" />
+
+            <Constraint
+                android:id="@id/ivTrackCover"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                motion:layout_constraintBottom_toBottomOf="@id/playerHeader"
+                motion:layout_constraintDimensionRatio="H,1:2"
+                motion:layout_constraintStart_toStartOf="@id/playerHeader"
+                motion:layout_constraintTop_toTopOf="@id/playerHeader" />
+
+            <Constraint
+                android:id="@id/bottomView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/windowBackground"
+                motion:layout_constraintBottom_toBottomOf="parent"
+                motion:layout_constraintLeft_toLeftOf="parent"
+                motion:layout_constraintRight_toRightOf="parent" />
+
+            <Constraint
+                android:id="@id/swipeContainer"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                motion:layout_constraintLeft_toLeftOf="parent"
+                motion:layout_constraintRight_toRightOf="parent"
+                motion:layout_constraintTop_toBottomOf="parent" />
+
+        </ConstraintSet>
+
+    </Transition>
+
+</MotionScene>
