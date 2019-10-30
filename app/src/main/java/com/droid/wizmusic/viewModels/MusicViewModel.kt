@@ -11,20 +11,33 @@ import com.droid.wizmusic.db.WizMusicDatabase
 import com.droid.wizmusic.network.NetworkManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import java.lang.Exception
 
+/*
+* Using co-routines for I/O requests
+* */
+
+
 class MusicViewModel : ViewModel(), AnkoLogger {
 
+    private lateinit var job: Job
     private var allTracks: MutableLiveData<TrackResult>? = null
     private var addTrackResult: MutableLiveData<AddTrackResult> = MutableLiveData()
+
+    override fun onCleared() {
+        super.onCleared()
+        info { "Cancelling request" }
+        job.cancel()
+    }
 
     fun getTracks(): LiveData<TrackResult>? {
         if (allTracks == null) {
             allTracks = MutableLiveData()
-            GlobalScope.launch(Dispatchers.IO) {
+            job = GlobalScope.launch(Dispatchers.IO) {
                 getAllTracks()
             }
         }

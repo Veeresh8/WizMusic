@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.viewpager.widget.PagerAdapter
 import coil.api.load
+import com.airbnb.lottie.LottieAnimationView
 import com.droid.wizmusic.R
 import java.util.*
 
@@ -34,7 +35,12 @@ class SwipeAdapter internal constructor(context: Context, trackList: List<Track>
 
         val imageView = itemView.findViewById<ImageView>(R.id.imageView)
         imageView.load(trackList[position].cover_image)
-
+        val rightAnimation = itemView.findViewById<LottieAnimationView>(R.id.lottieAnimationSwipeRight)
+        val leftAnimation = itemView.findViewById<LottieAnimationView>(R.id.lottieAnimationSwipeLeft)
+        rightAnimation.playAnimation()
+        rightAnimation.loop(true)
+        leftAnimation.playAnimation()
+        leftAnimation.loop(true)
         container.addView(itemView)
 
         return itemView

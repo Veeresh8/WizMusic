@@ -12,10 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:background="@drawable/border"
-        app:layout_constraintBottom_toBottomOf="@id/ivTrackCover">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        app:layout_constraintBottom_toBottomOf="@id/ivTrackCover" />
 
     <ImageView
         android:id="@+id/ivTrackCover"
@@ -53,10 +50,23 @@
         app:layout_constraintEnd_toStartOf="@id/ivNextSub"
         app:layout_constraintTop_toTopOf="@id/playerHeader" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationSwipe"
+        android:layout_width="30dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/playerHeader"
+        app:layout_constraintEnd_toStartOf="@id/ivPlaySub"
+        app:layout_constraintTop_toTopOf="@id/playerHeader"
+        app:lottie_fileName="swipe_up.json"
+        app:lottie_speed="0.7" />
+
     <ImageView
         android:id="@+id/ivNextSub"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:visibility="gone"
         android:layout_marginEnd="16dp"
         android:src="@drawable/fast_forward_24px"
         app:layout_constraintBottom_toBottomOf="@id/playerHeader"
@@ -69,12 +79,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:ellipsize="marquee"
         android:fontFamily="@font/alegreya_sans_sc"
+        android:singleLine="true"
         android:text="Kendrick Lamar"
         android:textColor="#FFF"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/bottomView"
-        app:layout_constraintEnd_toStartOf="@+id/ivPlaySub"
+        app:layout_constraintEnd_toStartOf="@+id/lottieAnimationSwipe"
         app:layout_constraintStart_toEndOf="@id/ivTrackCover"
         app:layout_constraintTop_toTopOf="@id/playerHeader" />
 

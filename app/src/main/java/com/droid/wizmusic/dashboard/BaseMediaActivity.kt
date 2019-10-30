@@ -13,6 +13,12 @@ import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.error
 import org.jetbrains.anko.info
 
+
+/*
+* Base class for handling media callbacks from Service.
+* Subclasses implement abstract methods to their needs
+* */
+
 abstract class BaseMediaActivity : AppCompatActivity(), AnkoLogger {
 
     private lateinit var mediaBrowser: MediaBrowserCompat
@@ -105,7 +111,7 @@ abstract class BaseMediaActivity : AppCompatActivity(), AnkoLogger {
                 }
             }
             updateTrackName(WizMusicService.currentTrack.song)
-            updateArtistName(WizMusicService.currentTrack.artists)
+                updateArtistName(WizMusicService.currentTrack.artists)
             updateCoverArt(WizMusicService.currentTrack.cover_image)
             WizMusicService.instance?.mediaPlayer?.duration?.let { updateSeekbar(it) }
         }

@@ -31,6 +31,12 @@ import org.jetbrains.anko.error
 import org.jetbrains.anko.info
 import org.jetbrains.anko.warn
 
+/*
+* Base media player class. Using MediaBrowserServiceCompat for media playback
+* which is a service bounded to the UI.
+*
+* Client-Server implementation.
+* */
 
 abstract class BaseMusicPlayer : MediaBrowserServiceCompat(),
     AudioManager.OnAudioFocusChangeListener,

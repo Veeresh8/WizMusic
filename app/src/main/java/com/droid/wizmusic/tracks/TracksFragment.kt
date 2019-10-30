@@ -99,7 +99,7 @@ class TracksFragment : Fragment(), TracksAdapter.ClickInterface, AnkoLogger {
             MaterialDialog(this).show {
                 title(R.string.purchase_title)
                 cancelable(true)
-                message(text = track.song)
+                message(text = "${track.song} - ${track.artists}")
                 positiveButton(text = "Confirm") {
                     musicViewModel?.saveTrack(track)
                         ?.observe(this@TracksFragment, Observer { result ->
@@ -126,7 +126,8 @@ class TracksFragment : Fragment(), TracksAdapter.ClickInterface, AnkoLogger {
             this.tracksDAO().getPurchasedTracks()
                 .observe(this@TracksFragment, Observer { purchasedTracks ->
                     val currentTracks = tracksAdapter?.currentList
-                    val filteredTracks = currentTracks?.filterNot { track -> inPurchases(track, purchasedTracks) }
+                    val filteredTracks =
+                        currentTracks?.filterNot { track -> inPurchases(track, purchasedTracks) }
                     tracksAdapter?.submitList(filteredTracks)
                 })
         }

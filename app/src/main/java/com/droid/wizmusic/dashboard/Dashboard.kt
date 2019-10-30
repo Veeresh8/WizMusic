@@ -21,7 +21,9 @@ import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
 import java.util.*
 
-
+/*
+* Contains UI, listening events from it's parent
+* */
 class Dashboard : BaseMediaActivity() {
 
     private var tracksFragment = TracksFragment.newInstance()
@@ -125,6 +127,10 @@ class Dashboard : BaseMediaActivity() {
         }
 
         currentState = motionLayout.currentState
+
+        lottieAnimationSwipe.playAnimation()
+        lottieAnimationSwipe.loop(true)
+
     }
 
     fun performPurchaseAnimation() {
