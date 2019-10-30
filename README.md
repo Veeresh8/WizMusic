@@ -1,7 +1,7 @@
 # WizMusic
 Cred Hiring Challenge
 
-![](https://giphy.com/gifs/QUMODPQZFkQVxJtaUE)
+![](https://media.giphy.com/media/QUMODPQZFkQVxJtaUE/giphy.gif)
 
 Highlights
 - Kotlin
