@@ -6,9 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorControlHighlight">@color/colorAccentRipple</item>
+        <item name="colorControlHighlight">@color/ripple_material_dark</item>
         <item name="md_corner_radius">16dp</item>
-        <item name="md_ripple_color">@color/colorAccentRipple</item>
         <item name="md_color_button_text">@color/colorPrimaryDark</item>
     </style>
 
@@ -28,4 +27,10 @@
         <item name="android:fontFamily">@font/alegreya_sans_sc_black_italic</item>
         <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="AppThemeTwo" parent="Theme.AppCompat.Light">
+        <item name="android:colorControlActivated">#FFF</item>
+        <item name="android:colorControlNormal">#EEE</item>
+    </style>
+
 </resources>

@@ -1,4 +1,4 @@
-package com.droid.wizmusic
+package com.droid.wizmusic.purchases
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
+import com.droid.wizmusic.*
+import com.droid.wizmusic.dashboard.Dashboard
+import com.droid.wizmusic.dashboard.Track
 import com.droid.wizmusic.db.WizMusicDatabase
 import com.droid.wizmusic.tracks.TracksAdapter
 import org.jetbrains.anko.AnkoLogger
@@ -23,7 +26,8 @@ class PurchasesFragment : Fragment(), TracksAdapter.ClickInterface, AnkoLogger {
     private var lottieAnimation: LottieAnimationView? = null
 
     companion object {
-        fun newInstance(): PurchasesFragment = PurchasesFragment()
+        fun newInstance(): PurchasesFragment =
+            PurchasesFragment()
     }
 
     override fun onCreateView(

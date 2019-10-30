@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.droid.wizmusic.Application
-import com.droid.wizmusic.Track
+import com.droid.wizmusic.dashboard.Track
 
 @Database(entities = [Track::class], version = 1)
 abstract class WizMusicDatabase : RoomDatabase() {

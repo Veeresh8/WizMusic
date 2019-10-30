@@ -5,4 +5,6 @@
     <string name="title_tracks">Tracks</string>
     <string name="title_purchases">Purchases</string>
     <string name="title_profile">Profile</string>
+    <string name="channel_name">WizMusic Playback Notification</string>
+    <string name="channel_description">MusicNotifications</string>
 </resources>

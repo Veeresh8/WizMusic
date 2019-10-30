@@ -1,4 +1,4 @@
-package com.droid.wizmusic
+package com.droid.wizmusic.dashboard
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

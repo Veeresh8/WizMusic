@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.droid.wizmusic.SingleViewTouchableMotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.droid.wizmusic.utils.SingleViewTouchableMotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/motionLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/motion_scene"
-    tools:ignore="contentDescription">
+    app:layoutDescription="@xml/motion_scene">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/playerHeader"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:background="@color/colorPlayer"
+        android:background="@drawable/border"
         app:layout_constraintBottom_toBottomOf="@id/ivTrackCover">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <ImageView
         android:id="@+id/ivTrackCover"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
         android:elevation="4dp"
+        android:padding="32dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/dummy"
         app:layout_constraintBottom_toBottomOf="@id/playerHeader"
         app:layout_constraintEnd_toEndOf="@id/playerHeader"
         app:layout_constraintStart_toStartOf="@id/playerHeader"
@@ -41,17 +43,18 @@
         app:layout_constraintTop_toTopOf="@id/playerHeader" />
 
     <ImageView
-        android:id="@+id/ivPlay"
+        android:id="@+id/ivPlaySub"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginEnd="16dp"
         android:src="@drawable/play_arrow_24px"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@id/playerHeader"
-        app:layout_constraintEnd_toStartOf="@id/ivNext"
+        app:layout_constraintEnd_toStartOf="@id/ivNextSub"
         app:layout_constraintTop_toTopOf="@id/playerHeader" />
 
     <ImageView
-        android:id="@+id/ivNext"
+        android:id="@+id/ivNextSub"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginEnd="16dp"
@@ -61,17 +64,17 @@
         app:layout_constraintTop_toTopOf="@id/playerHeader" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvTrackName"
+        android:id="@+id/tvTrackNamePlayer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/alegreya_sans_sc"
         android:text="Kendrick Lamar"
-        android:textColor="#000"
+        android:textColor="#FFF"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/bottomView"
-        app:layout_constraintEnd_toStartOf="@+id/ivPlay"
+        app:layout_constraintEnd_toStartOf="@+id/ivPlaySub"
         app:layout_constraintStart_toEndOf="@id/ivTrackCover"
         app:layout_constraintTop_toTopOf="@id/playerHeader" />
 
@@ -83,7 +86,7 @@
         android:fontFamily="@font/alegreya_sans_sc"
         android:text="Kendrick Lamar"
         android:textAlignment="center"
-        android:textColor="#000"
+        android:textColor="#FFF"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +102,7 @@
         android:fontFamily="@font/alegreya_sans_sc"
         android:text="The Art of Peer Pressure"
         android:textAlignment="center"
-        android:textColor="#000"
+        android:textColor="#EEE"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -110,8 +113,8 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginRight="64dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginRight="110dp"
         android:src="@drawable/fast_forward_24px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
@@ -120,21 +123,45 @@
         android:id="@+id/ivPrev"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
+        android:layout_marginStart="110dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/fast_rewind_24px"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+    <TextView
+        android:id="@+id/tvStartTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/alegreya_sans_sc"
+        android:text="00:00"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+    <TextView
+        android:id="@+id/tvEndTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/alegreya_sans_sc"
+        android:text="00:00"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
     <ImageView
         android:id="@+id/ivPlayFull"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="12dp"
         android:src="@drawable/play_arrow_24px"
+        app:layout_constraintEnd_toStartOf="@+id/ivNextFull"
         app:layout_constraintStart_toEndOf="@+id/ivPrev"
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
@@ -142,12 +169,25 @@
         android:id="@+id/bottomView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
+        app:itemBackground="@color/colorDark"
+        app:itemIconTint="@drawable/bottom_view_selector_icon"
+        app:itemTextColor="@drawable/bottom_view_selector"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu" />
+
+    <ImageView
+        android:id="@+id/ivRepeat"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
+        android:alpha="0.5"
+        android:src="@drawable/repeat_24px"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPrev"
+        app:layout_constraintEnd_toStartOf="@+id/ivPrev" />
 
     <SeekBar
         android:id="@+id/seekBar"
@@ -156,6 +196,20 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
+        android:theme="@style/AppThemeTwo"
         app:layout_constraintTop_toBottomOf="@id/tvArtistNameFull" />
 
-</com.droid.wizmusic.SingleViewTouchableMotionLayout>
+
+    <ImageView
+        android:id="@+id/ivShuffle"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="10dp"
+        android:alpha="0.5"
+        android:src="@drawable/shuffle_24px"
+        app:layout_constraintBottom_toBottomOf="@+id/ivNextFull"
+        app:layout_constraintStart_toEndOf="@+id/ivNextFull"
+        tools:layout_editor_absoluteX="307dp" />
+
+</com.droid.wizmusic.utils.SingleViewTouchableMotionLayout>

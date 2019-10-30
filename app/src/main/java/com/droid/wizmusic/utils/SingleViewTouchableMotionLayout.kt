@@ -1,4 +1,4 @@
-package com.droid.wizmusic
+package com.droid.wizmusic.utils
 
 import android.content.Context
 import android.graphics.Rect

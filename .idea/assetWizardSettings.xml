@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/private/var/folders/9l/fpgzxmfj3gq1x4y86nxm8k5m0000gn/T/AppTranslocation/0F297182-D0C6-4F6A-B136-CEA9422AB20C/d/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_play_arrow_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/private/var/folders/9l/fpgzxmfj3gq1x4y86nxm8k5m0000gn/T/AppTranslocation/0F297182-D0C6-4F6A-B136-CEA9422AB20C/d/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/hardware/ic_keyboard_arrow_right_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,7 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_play_arrow_black_48dp" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="outputName" value="ic_right" />
                             <entry key="sourceFile" value="$USER_HOME$" />
                           </map>
                         </option>

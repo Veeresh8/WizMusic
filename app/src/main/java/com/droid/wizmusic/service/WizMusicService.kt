@@ -1,7 +1,8 @@
-package com.droid.wizmusic
+package com.droid.wizmusic.service
 
 import android.support.v4.media.session.MediaSessionCompat
 import android.support.v4.media.session.PlaybackStateCompat
+import com.droid.wizmusic.dashboard.Track
 import org.jetbrains.anko.error
 import org.jetbrains.anko.info
 
@@ -47,7 +48,6 @@ class WizMusicService : BaseMusicPlayer() {
 
         override fun onStop() {
             info { "onStop" }
-            //onDestroy()
         }
 
         override fun onSkipToNext() {

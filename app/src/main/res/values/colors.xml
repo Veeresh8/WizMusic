@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3b77db</color>
-    <color name="colorPrimaryDark">#3b77db</color>
-    <color name="colorAccent">#4285F4</color>
-    <color name="colorAccentRipple">#804285F4</color>
-    <color name="colorPlayer">#EEE</color>
+    <color name="colorPrimary">#121212</color>
+    <color name="colorPrimaryDark">#121212</color>
+    <color name="colorAccent">#EEE</color>
+    <color name="colorPlayer">#292929</color>
+    <color name="colorDark">#121212</color>
+    <color name="colorMilk">#EEE</color>
+    <color name="colorRipple">#42ffffff</color>
 </resources>

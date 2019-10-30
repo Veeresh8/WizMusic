@@ -1,4 +1,4 @@
-package com.droid.wizmusic
+package com.droid.wizmusic.tracks
 
 import android.os.Bundle
 import android.os.Handler
@@ -11,7 +11,13 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
 import com.airbnb.lottie.LottieAnimationView
+import com.droid.wizmusic.*
+import com.droid.wizmusic.dashboard.AddTrackResult
+import com.droid.wizmusic.dashboard.Dashboard
+import com.droid.wizmusic.dashboard.Track
+import com.droid.wizmusic.dashboard.TrackResult
 import com.droid.wizmusic.db.WizMusicDatabase
+import com.droid.wizmusic.viewModels.MusicViewModel
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
@@ -23,7 +29,8 @@ class TracksFragment : Fragment(), TracksAdapter.ClickInterface, AnkoLogger {
     private var musicViewModel: MusicViewModel? = null
 
     companion object {
-        fun newInstance(): TracksFragment = TracksFragment()
+        fun newInstance(): TracksFragment =
+            TracksFragment()
     }
 
     override fun onCreateView(

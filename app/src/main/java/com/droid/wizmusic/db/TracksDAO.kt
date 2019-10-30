@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
-import com.droid.wizmusic.Track
+import com.droid.wizmusic.dashboard.Track
 
 @Dao
 interface TracksDAO {

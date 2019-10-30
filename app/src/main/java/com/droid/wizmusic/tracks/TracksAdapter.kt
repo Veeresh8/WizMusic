@@ -1,4 +1,4 @@
-package com.droid.wizmusic
+package com.droid.wizmusic.tracks
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,14 +6,26 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
+import com.droid.wizmusic.R
+import com.droid.wizmusic.dashboard.Track
+import com.droid.wizmusic.gone
+import com.droid.wizmusic.visible
 import kotlinx.android.synthetic.main.item_track.view.*
 
 class TracksAdapter(private val clickInterface: ClickInterface) :
-    androidx.recyclerview.widget.ListAdapter<Track, TracksAdapter.ViewHolder>(TracksDiff()) {
+    androidx.recyclerview.widget.ListAdapter<Track, TracksAdapter.ViewHolder>(
+        TracksDiff()
+    ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return ViewHolder(inflater.inflate(R.layout.item_track, parent, false))
+        return ViewHolder(
+            inflater.inflate(
+                R.layout.item_track,
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

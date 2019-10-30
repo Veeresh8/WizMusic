@@ -1,12 +1,16 @@
-package com.droid.wizmusic
+package com.droid.wizmusic.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.droid.wizmusic.dashboard.AddTrackResult
+import com.droid.wizmusic.dashboard.Track
+import com.droid.wizmusic.dashboard.TrackException
+import com.droid.wizmusic.dashboard.TrackResult
 import com.droid.wizmusic.db.WizMusicDatabase
+import com.droid.wizmusic.network.NetworkManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -41,7 +45,11 @@ class MusicViewModel : ViewModel(), AnkoLogger {
                 if (networkResponse.isSuccessful) {
                     when (networkResponse.code()) {
                         200 -> {
-                            allTracks?.postValue(TrackResult.Success(networkResponse.body()))
+                            allTracks?.postValue(
+                                TrackResult.Success(
+                                    networkResponse.body()
+                                )
+                            )
                         }
                         else -> {
                             allTracks?.postValue(
@@ -67,7 +75,13 @@ class MusicViewModel : ViewModel(), AnkoLogger {
 
             }
         } catch (exception: Exception) {
-            allTracks?.postValue(TrackResult.Error(TrackException(exception.message)))
+            allTracks?.postValue(
+                TrackResult.Error(
+                    TrackException(
+                        exception.message
+                    )
+                )
+            )
         }
     }
 
@@ -81,10 +95,22 @@ class MusicViewModel : ViewModel(), AnkoLogger {
                 if (WizMusicDatabase.instance?.tracksDAO()?.addTrack(track) != null) {
                     addTrackResult.postValue(AddTrackResult.Success)
                 } else {
-                    addTrackResult.postValue(AddTrackResult.Error(TrackException("Something went wrong adding ${track.song}")))
+                    addTrackResult.postValue(
+                        AddTrackResult.Error(
+                            TrackException(
+                                "Something went wrong adding ${track.song}"
+                            )
+                        )
+                    )
                 }
             } catch (exception: Exception) {
-                addTrackResult.postValue(AddTrackResult.Error(TrackException(exception.message)))
+                addTrackResult.postValue(
+                    AddTrackResult.Error(
+                        TrackException(
+                            exception.message
+                        )
+                    )
+                )
             }
         }
 

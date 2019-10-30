@@ -25,9 +25,10 @@
                 android:id="@id/ivTrackCover"
                 android:layout_width="0dp"
                 android:layout_height="400dp"
+                android:padding="32dp"
                 motion:layout_constraintEnd_toEndOf="parent"
                 motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintTop_toTopOf="parent"/>
+                motion:layout_constraintTop_toTopOf="parent" />
 
             <Constraint
                 android:id="@id/bottomView"
@@ -51,12 +52,12 @@
                 android:text="" />
 
             <Constraint
-                android:id="@id/ivNext"
-                android:text="" />
+                android:id="@id/ivNextSub"
+                android:visibility="gone" />
 
             <Constraint
-                android:id="@id/ivPlay"
-                android:text="" />
+                android:id="@id/ivPlaySub"
+                android:visibility="gone" />
 
         </ConstraintSet>
 
@@ -74,6 +75,7 @@
                 android:id="@id/ivTrackCover"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:padding="32dp"
                 motion:layout_constraintBottom_toBottomOf="@id/playerHeader"
                 motion:layout_constraintDimensionRatio="H,1:2"
                 motion:layout_constraintStart_toStartOf="@id/playerHeader"
@@ -98,6 +100,19 @@
 
         </ConstraintSet>
 
+        <KeyFrameSet>
+
+            <KeyAttribute
+                android:alpha="1"
+                motion:framePosition="100"
+                motion:motionTarget="@id/swipeContainer" />
+
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="5"
+                motion:motionTarget="@id/swipeContainer" />
+
+        </KeyFrameSet>
     </Transition>
 
 </MotionScene>

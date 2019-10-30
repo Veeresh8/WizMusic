@@ -1,4 +1,4 @@
-package com.droid.wizmusic
+package com.droid.wizmusic.service
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -19,11 +19,13 @@ import androidx.core.net.toUri
 import androidx.media.MediaBrowserServiceCompat
 import coil.Coil
 import coil.api.load
-import com.droid.wizmusic.MediaStyleHelper.addNext
-import com.droid.wizmusic.MediaStyleHelper.addPause
-import com.droid.wizmusic.MediaStyleHelper.addPlay
-import com.droid.wizmusic.MediaStyleHelper.addPrev
-import com.droid.wizmusic.MediaStyleHelper.createNotification
+import com.droid.wizmusic.utils.MediaStyleHelper
+import com.droid.wizmusic.utils.MediaStyleHelper.addNext
+import com.droid.wizmusic.utils.MediaStyleHelper.addPause
+import com.droid.wizmusic.utils.MediaStyleHelper.addPlay
+import com.droid.wizmusic.utils.MediaStyleHelper.addPrev
+import com.droid.wizmusic.utils.MediaStyleHelper.createNotification
+import com.droid.wizmusic.dashboard.Track
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.error
 import org.jetbrains.anko.info
@@ -72,7 +74,10 @@ abstract class BaseMusicPlayer : MediaBrowserServiceCompat(),
 
     private fun initMediaSession() {
         info { "initMediaSession" }
-        mediaSession = MediaSessionCompat(this, TAG)
+        mediaSession = MediaSessionCompat(
+            this,
+            TAG
+        )
         mediaSession?.apply {
             setCallback(mediaSessionCallback)
             setFlags(
@@ -242,7 +247,10 @@ abstract class BaseMusicPlayer : MediaBrowserServiceCompat(),
             mediaPlayer.setOnPreparedListener { mediaPlayer ->
                 mediaPlayer.setOnBufferingUpdateListener { mediaPlayer, progress ->
                     info { "Buffering: $progress" }
-                    Toast.makeText(this, "Buffering: $progress", Toast.LENGTH_SHORT).show()
+
+                    if (progress != 100)
+                        Toast.makeText(this, "Buffering: $progress", Toast.LENGTH_SHORT).show()
+
                     if (progress == 100 && currentState != PlaybackStateCompat.STATE_PAUSED) {
                         initPlaybackState(PlaybackStateCompat.STATE_PLAYING)
                         mediaPlayer.start()

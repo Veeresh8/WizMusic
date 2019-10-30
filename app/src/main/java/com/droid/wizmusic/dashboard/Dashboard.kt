@@ -1,4 +1,4 @@
-package com.droid.wizmusic
+package com.droid.wizmusic.dashboard
 
 import android.animation.Animator
 import android.os.Bundle
@@ -9,6 +9,8 @@ import androidx.constraintlayout.motion.widget.MotionScene
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import coil.api.load
+import com.droid.wizmusic.*
+import com.droid.wizmusic.profile.ProfileFragment
 import com.droid.wizmusic.purchases.PurchasesFragment
 import com.droid.wizmusic.service.BaseMusicPlayer
 import com.droid.wizmusic.service.WizMusicService
@@ -16,6 +18,7 @@ import com.droid.wizmusic.tracks.TracksFragment
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.player.*
 import org.jetbrains.anko.info
+import org.jetbrains.anko.toast
 import java.util.*
 
 
@@ -33,11 +36,6 @@ class Dashboard : BaseMediaActivity() {
         initBottomView()
         initSwipeView()
         initClicks()
-    }
-
-    override fun onDestroy() {
-        info { "onDestroy" }
-        super.onDestroy()
     }
 
     override fun onBackPressed() {
@@ -126,7 +124,7 @@ class Dashboard : BaseMediaActivity() {
             }
         }
 
-        playerHeader.alpha = 0F
+        currentState = motionLayout.currentState
     }
 
     fun performPurchaseAnimation() {
@@ -160,9 +158,9 @@ class Dashboard : BaseMediaActivity() {
         WizMusicService.tracks = currentList.toMutableList()
         WizMusicService.currentTrack = track
         mediaController.transportControls.play()
-
-        playerHeader.alpha = 1F
-
+        if (currentState == motionLayout?.startState || currentState == 0) {
+            motionLayout?.transitionToEnd()
+        }
     }
 
     override fun updateTrackName(trackName: String) {
@@ -190,8 +188,26 @@ class Dashboard : BaseMediaActivity() {
             override fun run() {
                 if (isFinishing)
                     return
-                val currentProgress = WizMusicService.instance?.mediaPlayer?.currentPosition ?: 0
-                seekBar.progress = currentProgress
+
+                runOnUiThread {
+                    val currentProgress =
+                        WizMusicService.instance?.mediaPlayer?.currentPosition ?: 0
+                    seekBar.progress = currentProgress
+
+                    tvEndTime.text =
+                        WizMusicService.instance?.mediaPlayer?.duration?.toLong()?.let {
+                            getReadableTime(
+                                it
+                            )
+                        }
+
+                    tvStartTime.text =
+                        WizMusicService.instance?.mediaPlayer?.currentPosition?.toLong()?.let {
+                            getReadableTime(
+                                it
+                            )
+                        }
+                }
             }
         }, 0, 1000)
     }
@@ -280,10 +296,12 @@ class Dashboard : BaseMediaActivity() {
                 it.tag = "off"
                 it.alpha = 0.5F
                 BaseMusicPlayer.isRepeat = false
+                toast("Repeat OFF")
             } else {
                 it.tag = "on"
                 it.alpha = 1F
                 BaseMusicPlayer.isRepeat = true
+                toast("Repeat ON")
             }
         }
 
@@ -297,12 +315,14 @@ class Dashboard : BaseMediaActivity() {
                 it.alpha = 0.5F
                 WizMusicService.tracks.clear()
                 WizMusicService.tracks.addAll(WizMusicService.tracksHolder)
+                toast("Shuffle OFF")
             } else {
                 it.tag = "on"
                 it.alpha = 1F
                 WizMusicService.tracksHolder.clear()
                 WizMusicService.tracksHolder.addAll(WizMusicService.tracks)
                 WizMusicService.tracks.shuffle()
+                toast("Shuffle ON")
             }
 
             updateSwipeView()

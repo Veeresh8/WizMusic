@@ -1,4 +1,4 @@
-package com.droid.wizmusic
+package com.droid.wizmusic.dashboard
 
 import android.content.ComponentName
 import android.media.AudioManager
@@ -81,6 +81,7 @@ abstract class BaseMediaActivity : AppCompatActivity(), AnkoLogger {
     override fun onDestroy() {
         info { "onDestroy" }
         MediaControllerCompat.getMediaController(this)?.unregisterCallback(controllerCallback)
+        mediaBrowser.disconnect()
         super.onDestroy()
     }
 
