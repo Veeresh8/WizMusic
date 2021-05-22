@@ -1,5 +1,4 @@
 # WizMusic
-Cred Hiring Challenge
 
 ![](https://media.giphy.com/media/cPTCzyT9rz391vBBxm/giphy.gif)
 
